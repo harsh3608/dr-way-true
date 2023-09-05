@@ -92,8 +92,8 @@ app.post('/login', (req, res) => {
 //#region Guest Api
 
 app.post('/guest', (req, res)=> {
-    let doctor = req.body.doctor;
-    db.all('SELECT * FROM MedicalRecords where doctor = ?',[doctor], function(err, rows) {
+    let desease = req.body.desease;
+    db.all('SELECT * FROM MedicalRecords where disease = ?',[desease], function(err, rows) {
         console.log('errors :' +err)
         res.send(rows)
 
