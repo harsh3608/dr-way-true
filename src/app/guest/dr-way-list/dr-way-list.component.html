@@ -1,0 +1,29 @@
+<div class="container mt-5">
+
+    <div class="col-6">
+        <form class="d-flex" role="search" #ReqData="ngForm" >
+            <input class="form-control me-2" ngModel name="doctor" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" (click)="SearchData(ReqData.value)">Search</button>
+        </form>
+    </div>
+    <div class="col mt-4">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-borders table-striped">
+                    <thead>
+                        <th>Doctor</th>
+                        <th>Disease</th>
+                        <th>Medicine</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of drWayData">
+                            <td>{{data.doctor}}</td>
+                            <td>{{data.disease}}</td>
+                            <td>{{data.medicine}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
