@@ -1,0 +1,77 @@
+<div class="container ">
+    <div>
+        <div class="card  mt-4">
+            <div class="card-header">
+                <h3>Add Data</h3>
+            </div>
+            <div class="card-body">
+                <form #AddData="ngForm" (submit)="AddData.resetForm({})">
+                    <div class="row" >
+                        <div class="col-4 form-Group">
+                            <label>Doctor Name</label>
+                            <input type="text" class="form-control" ngModel name="doctor" required>
+                        </div>
+                        <div class="col-4 form-Group">
+                            <label>Disease Name</label>
+                            <input type="text" class="form-control" ngModel name="disease" required>
+                        </div>
+                        <div class="col-2 form-Group">
+                            <label>Medicine Name</label>
+                            <input type="text" class="form-control"  ngModel name="medicine" required>
+                        </div>
+                        <div class="col mt-auto form-Group">
+                        <button type="submit"  class="btn btn-success" (click)="SendCreateData(AddData.value)">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-8">
+                <h2>List of Data</h2>
+                <table class="mt-5  table table-borders table-striped">
+                    <thead>
+                        <th>Doctor</th>
+                    <th>Disease</th>
+                    <th>Medicine</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of drWayData">
+                        <td>{{data.doctor}}</td>
+                        <td>{{data.disease}}</td>
+                        <td>{{data.medicine}}</td>
+                        <td>
+                            <button class="btn btn-warning" (click)="editData(data)">Edit</button>
+                            <button class="ms-3 btn btn-danger" (click)="deleteData(data.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="col-4">
+                <h2>Edit Data</h2>
+                <form #EditData="ngForm" (submit)="EditData.resetForm({})">
+                    <div class="row" >
+                        <div class=" form-Group">
+                            <label>Doctor Name</label>
+                            <input type="hidden"  [(ngModel)]="SingleDrData.id" name="id" />
+                            <input type="text" class="form-control" [(ngModel)]="SingleDrData.doctor" name="doctor" required>
+                        </div>
+                        <div class=" form-Group">
+                            <label>Disease Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="SingleDrData.disease" name="disease" required>
+                        </div>
+                        <div class=" form-Group">
+                            <label>Medicine Name</label>
+                            <input type="text" class="form-control"  [(ngModel)]="SingleDrData.medicine" name="medicine" required>
+                        </div>
+                        <div class="col mt-auto form-Group">
+                        <button type="submit"  class="mt-3 btn btn-success" (click)="SendEditData(EditData.value)">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

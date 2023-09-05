@@ -1,0 +1,22 @@
+<div class="container mt-5 ">
+    <div class="row card col-6">
+        <div class="card-header">        
+            <h2>SignIn</h2>
+        </div>
+        <form class="card-body" #loginForm="ngForm" >
+            <div class="form-group ">
+                <label>Username</label>                
+                <input ngModel #Username="ngModel" [class.is-invalid]="(Username.invalid && Username.touched)" value="" placeholder="" type="text" class="form-control" name="username" required>
+                <small class="text-danger" [class.d-none]="!(Username.invalid && Username.touched)">Please enter your username</small>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input minlength="8" ngModel #password="ngModel" type="password" [class.is-invalid]="(password.invalid && password.touched)" class="form-control" name="password" required="">
+                <div [class.d-none]="!password.errors">
+                <small class="text-danger" [class.d-none]="!(password.invalid && password.touched)">Please enter your Password</small>
+                </div>
+            </div>
+            <button type="button" (click)="checkUser(loginForm.value)" [class.disabled]="loginForm.invalid" class="m-3 btn btn-primary col-3">SignIn</button>
+        </form>
+    </div>
+</div>
